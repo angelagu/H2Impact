@@ -21,11 +21,13 @@ Installation
 
 * Transform JSX to JS using [React tool](http://facebook.github.io/react/docs/tooling-integration.html#productionizing-precompiled-jsx) for development purpose
 		
+		(FYI if this doesn't work just skip it...)
+
 		jsx --watch app/static/jsx app/static/js
 		
-* Run Flask server
+* Run Flask
 		
-		python app/main.py
+		sh run.sh
 		
 * Start coding! :)
 
