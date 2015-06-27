@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../../c3/c3.css" rel="stylesheet" type="text/css">
+
+    <!-- Load d3.js and c3.js -->
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="../../c3/c3.min.js"></script>
+</head>
+<body>
+<div id="chart"></div>
+<script language="JavaScript">
+    var chart = c3.generate({
+        data: {
+            columns: [
+                ['Actual Shower Time', 10, 11, 17, 8, 10, 13],
+                ['Ideal Shower Time', 12.5, 12.5, 12.5, 12.5, 12.5, 12.5]
+            ],
+            types: {
+                data1: 'area',
+                data2: 'line'
+            },
+        }
+    });
+</script>
+</body>
+</html>
