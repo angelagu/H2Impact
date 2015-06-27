@@ -33,15 +33,11 @@ def index():
     return render_template('intro.html')
 
 
-@app.route('/account')
-def account():
-    return render_template('bootstrap_index.html')
-
 @app.route('/about')
 def about():
     return render_template('about.html')
 
-@app.route('/mysage/<username>', methods=['GET'])
+@app.route('/myimpact/<username>', methods=['GET'])
 def show_showers(username):
     shower_min = Shower.query.filter_by(name=username).order_by(Shower.shower_length).first().shower_length
     shower_max = Shower.query.filter_by(name=username).order_by(Shower.shower_length.desc()).first().shower_length
