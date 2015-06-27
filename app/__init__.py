@@ -4,12 +4,34 @@ import json
 
 from flask import Flask, Response, request, session, g, redirect, url_for, abort, render_template, flash
 from urlparse import urljoin
+from flask.ext.sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
+app.config.from_object('config')
+db = SQLAlchemy(app)
 
-@app.route("/")
+
+class Shower(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), index=True, unique=True)
+    email = db.Column(db.String(120), index=True, unique=True)
+    shower_length = db.Column(db.Integer, index=True)
+    time = db.Column(db.DateTime, index=True, server_default=db.func.now())
+
+    def __repr__(self):
+        return '<User %r>' % (self.name)
+
+
+@app.route('/')
 def index():
-    return render_template('base.html')
+    return render_template('index.html')
+
+
+@app.route('/hello')
+def hello():
+    return render_template('hello.html')
+
 
 @app.route('/api/<path:path>', methods=['GET'])
 def api(path):
