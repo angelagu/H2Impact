@@ -19,7 +19,7 @@
 
     <!-- Custom Fonts -->
     <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -94,46 +94,87 @@
             <div class="col-md-8">
                 <br>
                 <img style="margin-top:-60px" src="/static/img/water-droplet.png">
-            </div>
-            <div  style="background-color:#F15C5C" class="col-md-3">
-                <br>
-                <div class="shower">
-                    <h4>How long did you shower today?</h4>
-                    <div class="input-group">
-                        <input type="number" class="form-control" placeholder="Time in minutes">
-                        <span class="input-group-btn">
-                            <button  style="color:#ACD373" class="btn btn-default submit" type="button">Enter</button>
-                        </span>
+
+                 <div class="row" style="margin-top: -100px">
+                   <div style="background: white; margin-left: 50px">
+                    <div id="chart"></div>
+                        <script language="JavaScript">
+                            var chart = c3.generate({
+                                data: {
+                                    columns: [
+                                        ['Actual Shower Time', 10, 11, 17, 8, 10, 13],
+                                        ['Ideal Shower Time', 12.5, 12.5, 12.5, 12.5, 12.5, 12.5]
+                                    ],
+                                    types: {
+                                        data1: 'area',
+                                        data2: 'line'
+                                    },
+                                }
+                            });
+                        </script>
                     </div>
                 </div>
-                <!--<div>Min Shower Time {{min}}</div>
-                <div>Max Shower Time {{max}}</div>
-                <div>Average Shower Time {{average}}</div>-->
-                <br><br>
-                <div class="impact">
-                    <h4>Your H2Impact&trade;</h4>
-                    <div style="margin-top:-30px; color:deepskyblue">
-                        <i class="fa fa-tint"></i>
-                        <i class="fa fa-tint"></i>
-                        <i class="fa fa-tint"></i>
-                        <i class="fa fa-tint"></i>
-                        <i class="fa fa-tint"></i>
-                        <i class="fa fa-tint"></i>
-                        <h6>10 gallons</h6>
+            </div>
+            <div  class="col-md-3" style="background-color:#F15C5C;margin-left:30px">
+                <div  >
+                    <div class="shower">
+                                        <br><br>
+                        <h4>How long did you shower today?</h4>
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="Time in minutes">
+                            <span class="input-group-btn">
+                                <button  style="color:#ACD373" class="btn btn-default submit" type="button">Enter</button>
+                            </span>
+                        </div>
                     </div>
-                    <ul id="impact">
-                        <li>100 more cows have milk</li>
-                        <li>12 more pounds of bacon </li>
-                        <li>50 more watermelons</li>
+                    <!--<div>Min Shower Time {{min}}</div>
+                    <div>Max Shower Time {{max}}</div>
+                    <div>Average Shower Time {{average}}</div>-->
+                    <br><br>
+                    <div class="impact">
+                        <h4>Your H2Impact&trade;</h4>
+                        <div style="margin-top:-30px; color:deepskyblue">
+                            <i class="fa fa-tint"></i>
+                            <i class="fa fa-tint"></i>
+                            <i class="fa fa-tint"></i>
+                            <i class="fa fa-tint"></i>
+                            <i class="fa fa-tint"></i>
+                            <i class="fa fa-tint"></i>
+                            <h6>10 gallons</h6>
+                        </div>
+                        <ul id="impact">
+                            <li>100 more cows have milk</li>
+                            <li>12 more pounds of bacon </li>
+                            <li>50 more watermelons</li>
 
-                    </ul>
+                        </ul>
+                    </div></div>
+
+                <div class="usage">
+                    <br><br>
+                    <h4 style="margin-bottom:0px">Daily Usage</h4>
+                    <h4 style="margin-bottom:0px">(Gallons)</h4>
+                    <svg id="fillgauge2" width="97%" height="300"></svg>
+                    <script language="JavaScript">
+                        var config1 = liquidFillGaugeDefaultSettings();
+                        config1.circleColor = "#fff";
+                        config1.textColor = "#fff";
+                        config1.waveAnimate = true;
+                        config1.waveAnimateTime = 2000;
+                        config1.waveRise = false;
+                        config1.waveOffset = 0.25;
+                        config1.textSize = 0.75;
+                        config1.waveCount = 1;
+                        config1.displayPercent = false;
+                        loadLiquidFillGauge("fillgauge2", 55, config1);
+                    </script>
                 </div>
                 <br>
             </div>
         </div>
         <br>
         <div class="row" style="margin-top: -100px">
-           <div class="col-md-6 col-md-offset-1" style="background: white">
+           <div class="col-md-6 col-md-offset-1">
             <div id="chart"></div>
             <script language="JavaScript">
                 var chart = c3.generate({
@@ -170,7 +211,6 @@
             </script>
         </div>
             <div class="col-md-4">
-            <h2>Your Daily Usage</h2>
             <svg id="fillgauge2" width="97%" height="300"></svg>
             <script language="JavaScript">
                 var config1 = liquidFillGaugeDefaultSettings();
