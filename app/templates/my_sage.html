@@ -29,6 +29,28 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- jQuery -->
+    <script data-main='/static/js/main' src="/static/jsx/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script data-main='/static/js/main' src="/static/jsx/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script data-main='/static/js/main' src="/static/jsx/jquery.easing.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script data-main='/static/js/main' src="/static/jsx/grayscale.js"></script>
+
+    <script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
+    <script src="/static/jsx/liquidFillGauge.js" language="JavaScript"></script>
+    <style>
+        .liquidFillGaugeText { font-family: Helvetica; font-weight: bold; }
+    </style>
+
+    <link href="/static/c3/c3.css" rel="stylesheet" type="text/css">
+
+    <!-- Load d3.js and c3.js -->
+    <script src="/static/c3/c3.min.js"></script>
 </head>
 
 <body style="background-color:#ED4849" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -110,12 +132,42 @@
             </div>
         </div>
         <br>
-        <div class="row" >
-            <div class="col-md-8"></div>
-
+        <div class="row" style="margin-top: -100px">
+           <div class="col-md-6 col-md-offset-1" style="background: white">
+            <div id="chart"></div>
+            <script language="JavaScript">
+                var chart = c3.generate({
+                    data: {
+                        columns: [
+                            ['Actual Shower Time', 10, 11, 17, 8, 10, 13],
+                            ['Ideal Shower Time', 12.5, 12.5, 12.5, 12.5, 12.5, 12.5]
+                        ],
+                        types: {
+                            data1: 'area',
+                            data2: 'line'
+                        },
+                    }
+                });
+            </script>
         </div>
-    </header>
-
+            <div class="col-md-4">
+            <h2>Your Daily Usage</h2>
+            <svg id="fillgauge2" width="97%" height="300"></svg>
+            <script language="JavaScript">
+                var config1 = liquidFillGaugeDefaultSettings();
+                config1.circleColor = "#fff";
+                config1.textColor = "#fff";
+                config1.waveAnimate = true;
+                config1.waveAnimateTime = 2000;
+                config1.waveRise = false;
+                config1.waveOffset = 0.25;
+                config1.textSize = 0.75;
+                config1.waveCount = 1;
+                config1.displayPercent = false;
+                loadLiquidFillGauge("fillgauge2", 55, config1);
+            </script>
+            </div></div>
+</div>
 
     <!-- Footer -->
     <footer>
@@ -123,18 +175,6 @@
             <h6 style="color:springgreen">Copyright &copy; H2Impact &trade; - Dropbox Summer Hack Day 2015 </h6>
         </div>
     </footer>
-
-    <!-- jQuery -->
-    <script data-main='/static/js/main' src="/static/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script data-main='/static/js/main' src="/static/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script data-main='/static/js/main' src="/static/js/jquery.easing.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script data-main='/static/js/main' src="/static/js/grayscale.js"></script>
 
 </body>
 
